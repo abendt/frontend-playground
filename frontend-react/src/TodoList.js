@@ -36,8 +36,8 @@ class AddTodo extends Component {
 
     render() {
         return (<div>
-            <Input placeholder="enter todo" value={this.state.value} onChange={this.handleChange} />
-            <Button primary onClick={this.handleSubmit}>add</Button>
+                <Input placeholder="enter todo" value={this.state.value} onChange={this.handleChange} />
+                <Button primary onClick={this.handleSubmit}>add</Button>
             </div>);
     }
 }
