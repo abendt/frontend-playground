@@ -3,7 +3,7 @@ import { Button, Input, List } from 'semantic-ui-react'
 
 const Todo = ({text, completed}) => {
 
-    const icon = (completed === 'true') ? 'star' : 'empty star';
+    const icon = completed  ? 'star' : 'empty star';
 
     return (
         <List.Item>
@@ -29,7 +29,9 @@ class AddTodo extends Component {
     }
 
     handleSubmit(event) {
-        console.log('A name was submitted: ' + this.state.value);
+        if (this.state.value) {
+            this.props.onAddTodo(this.state.value);
+        }
         event.preventDefault();
         this.setState({value: ''});
     }
@@ -43,17 +45,48 @@ class AddTodo extends Component {
 }
 
 class TodoList extends Component {
+
+
+
+    constructor(props) {
+        super(props);
+        this.state = {todos: [
+        {id: 0, text: 'item 1', completed: false},
+        {id: 1, text: 'item 1', completed: true}
+        ]};
+
+        this.count = 2;
+    }
+
+
+    addTodo(todo) {
+        const newTodo = {id: this.count++, text: todo, completed: false};
+
+        this.setState((prevState, props) => {
+
+            const prevTodos = prevState.todos;
+
+            prevTodos.push(newTodo);
+
+            const nextState = {todos: prevTodos};
+
+            return nextState;
+        });
+
+    }
+
   render() {
     return (
       <div>
-        <AddTodo />
+        <AddTodo onAddTodo={(todo) => this.addTodo(todo)}/>
 
         <div>
             <List selection verticalAlign='middle'>
-                <Todo text='item 1' completed='false' />
-                <Todo text='item 2' completed='false' />
-                <Todo text='item 3' completed='false' />
-                <Todo text='item 4' completed='true' />
+                {
+                    this.state.todos.map((todo) => <Todo key={todo.id}
+                        text={todo.text}
+                        completed={todo.completed} />)
+                }
             </List>
         </div>
       </div>
