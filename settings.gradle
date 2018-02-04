@@ -1,4 +1,4 @@
-include 'todo-backend'
+include 'todo-backend', 'react-frontend'
 
 rootProject.buildFileName = "build.gradle.kts"
 
