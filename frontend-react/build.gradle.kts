@@ -6,6 +6,7 @@ plugins {
 
 tasks {
     createTask("test", YarnTask::class) {
+        dependsOn("yarn")
         args = listOf("test")
         setEnvironment(mapOf("CI" to "true"))
     }
