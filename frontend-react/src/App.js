@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import TodoList from "./TodoList";
+import TodoList from "./components/TodoList";
 import { Container } from 'semantic-ui-react'
 
 class App extends Component {
