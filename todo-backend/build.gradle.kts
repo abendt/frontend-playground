@@ -51,8 +51,7 @@ java {
     targetCompatibility = JavaVersion.VERSION_1_8
 }
 
-fun ktor(artifactId: String): String {
-    val ktorVersion = "0.9.1"
+fun ktor(artifactId: String, ktorVersion: String = "0.9.1"): String {
 
     return "io.ktor:$artifactId:$ktorVersion"
 }

@@ -3,11 +3,16 @@ package backend
 import com.natpryce.hamkrest.assertion.assert
 import com.natpryce.hamkrest.equalTo
 import com.nhaarman.mockito_kotlin.*
+import io.ktor.application.Application
 import io.ktor.http.HttpMethod
 import io.ktor.http.HttpStatusCode
 import io.ktor.server.testing.handleRequest
 import io.ktor.server.testing.withTestApplication
+import org.junit.Rule
 import org.junit.Test
+import org.junit.rules.TestRule
+import org.junit.runner.Description
+import org.junit.runners.model.Statement
 
 class TodoApplicationTest {
 
@@ -15,9 +20,11 @@ class TodoApplicationTest {
         on { createTodo(any()) } doReturn Todo("uuid", "todo", false)
     }
 
+    val testedApplication: Application.() -> Unit = { configureBackend(todoServiceMock) }
+
     @Test
     fun getAll() {
-        withTestApplication({ configureBackend(todoServiceMock) }) {
+        withTestApplication(testedApplication) {
             with(handleRequest(HttpMethod.Get, "/todos", {
                 addHeader("Accept", "application/json")
             })) {
@@ -30,7 +37,7 @@ class TodoApplicationTest {
 
     @Test
     fun postCreate() {
-        withTestApplication({ configureBackend(todoServiceMock) }) {
+        withTestApplication(testedApplication) {
             with(handleRequest(HttpMethod.Post, "/todos", {
                 addHeader("Accept", "application/json")
                 addHeader("Content-Type", "application/json")
@@ -45,7 +52,7 @@ class TodoApplicationTest {
 
     @Test
     fun postToggle() {
-        withTestApplication({ configureBackend(todoServiceMock) }) {
+        withTestApplication(testedApplication) {
             with(handleRequest(HttpMethod.Post, "/todos/myId", {
                 addHeader("Accept", "application/json")
             })) {
