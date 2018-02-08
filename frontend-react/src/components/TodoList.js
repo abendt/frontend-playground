@@ -15,7 +15,6 @@ class TodoList extends Component {
         this.count = 2;
     }
 
-
     addTodo(todo) {
         const newTodo = {id: this.count++, text: todo, completed: false};
 
