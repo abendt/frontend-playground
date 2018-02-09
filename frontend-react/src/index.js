@@ -7,6 +7,8 @@ import { Provider } from 'react-redux'
 
 import Immutable from 'immutable';
 
+import {todos} from './reducers';
+
 import {
   combineReducers
 } from 'redux-immutable';
@@ -14,11 +16,14 @@ import {
 import {
   createStore
 } from 'redux';
+
 import registerServiceWorker from './registerServiceWorker';
 
-const initialState = Immutable.Map();
-const rootReducer = combineReducers({});
-const store = createStore(rootReducer, initialState);
+// https://github.com/gajus/redux-immutable
+
+const initialState = Immutable.Map({todos: Immutable.List()});
+const rootReducer = combineReducers({todos: todos});
+const store = createStore(rootReducer, initialState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 ReactDOM.render(
 <Provider store={store}>

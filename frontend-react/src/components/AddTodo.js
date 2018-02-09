@@ -1,7 +1,9 @@
-import React, { Component } from "react";
-import { Button, Input, List } from 'semantic-ui-react'
+import React, {Component} from "react";
+import {Button, Input} from 'semantic-ui-react'
 
 class AddTodo extends Component {
+
+    // https://reactjs.org/docs/forms.html
 
     constructor(props) {
         super(props);

@@ -1,7 +1,9 @@
-import React, { Component } from "react";
-import { Button, Input, List } from 'semantic-ui-react'
+import React from "react";
+import {List} from 'semantic-ui-react'
 
 const Todo = ({text, completed}) => {
+
+    // functional component: https://reactjs.org/docs/components-and-props.html
 
     const icon = completed  ? 'star' : 'empty star';
 
@@ -13,6 +15,6 @@ const Todo = ({text, completed}) => {
                     </List.Content>
         </List.Item>
     );
-}
+};
 
 export default Todo;
