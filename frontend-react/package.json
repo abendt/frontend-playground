@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.17.1",
     "immutable": "^3.8.2",
     "lodash": "^4.17.5",
     "react": "^16.2.0",
@@ -11,6 +12,7 @@
     "react-scripts": "1.1.0",
     "redux": "^3.7.2",
     "redux-immutable": "^4.0.0",
+    "redux-thunk": "^2.2.0",
     "semantic-ui-css": "^2.2.14",
     "semantic-ui-react": "^0.77.2",
     "uuid": "^3.2.1"
@@ -29,5 +31,6 @@
     "jest-enzyme": "^4.2.0",
     "react-styleguidist": "^6.2.2",
     "react-test-renderer": "^16.2.0"
-  }
+  },
+  "proxy": "http://127.0.0.1:8080"
 }

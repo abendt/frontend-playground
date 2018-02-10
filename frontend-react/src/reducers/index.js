@@ -1,9 +1,9 @@
-import {ADD_TODO, TOGGLE_TODO} from '../actions';
+import {ADD_TODO, TOGGLE_TODO, LOAD_TODOS} from '../actions';
 import Immutable from 'immutable';
 
-export const todo = (id, text) => Immutable.Map({id, text, completed: false});
+export const todo = (uuid, todo) => Immutable.Map({uuid, todo, done: false});
 
-export const toggle = (todo) => todo.set('completed', !todo.get('completed'));
+export const toggle = (todo) => todo.set('done', !todo.get('done'));
 
 // https://redux.js.org/docs/basics/Reducers.html
 
@@ -18,13 +18,15 @@ export const todos = (state = Immutable.List(), action) => {
         case ADD_TODO: {
             return state.push(todo(action.id, action.text));
         }
-        case TOGGLE_TODO:
-            console.log('TOGGLE_TODO');
 
+        case TOGGLE_TODO:
             return state.map(todo =>
-                (todo.get('id') === "id")
+                (todo.get('uuid') === action.id)
                     ? toggle(todo)
                     : todo);
+
+        case LOAD_TODOS:
+            return Immutable.fromJS(action.todos);
 
         default:
             return state

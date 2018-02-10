@@ -26,12 +26,12 @@ class TodoServiceTest {
     fun newTodoIsNotDone() {
         val todo = serviceUnderTest.createTodo("my todo")
 
-        assert.that(todo.done, equalTo(false))
+        assert.that(todo.first().done, equalTo(false))
     }
 
     @Test
     fun canToggleTodo() {
-        val todo = serviceUnderTest.createTodo("my todo")
+        val todo = serviceUnderTest.createTodo("my todo").first()
 
         serviceUnderTest.toggleTodo(todo.uuid, true)
 

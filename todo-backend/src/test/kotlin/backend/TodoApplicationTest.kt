@@ -17,7 +17,7 @@ import org.junit.runners.model.Statement
 class TodoApplicationTest {
 
     val todoServiceMock = mock<TodoService> {
-        on { createTodo(any()) } doReturn Todo("uuid", "todo", false)
+        on { createTodo(any()) } doReturn listOf(Todo("uuid", "todo", false))
     }
 
     val testedApplication: Application.() -> Unit = { configureBackend(todoServiceMock) }
