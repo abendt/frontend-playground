@@ -1,5 +1,3 @@
-import React from "react";
-
 import TodoList from '../components/TodoList'
 import {addTodo, toggleTodo} from '../actions';
 import {connect} from 'react-redux'

@@ -22,7 +22,7 @@ import registerServiceWorker from './registerServiceWorker';
 // https://github.com/gajus/redux-immutable
 
 const initialState = Immutable.Map({todos: Immutable.List()});
-const rootReducer = combineReducers({todos: todos});
+const rootReducer = combineReducers({todos});
 const store = createStore(rootReducer, initialState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 ReactDOM.render(
