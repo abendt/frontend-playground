@@ -12,12 +12,12 @@ const TodoList = ({todos, onAddTodo, onToggleTodo}) => {
             <AddTodo onAddTodo={onAddTodo}/>
 
             <div>
-                <List selection verticalAlign='middle'>
+                <List selection animated verticalAlign='middle'>
                     {
                         todos.map((todo) => <Todo key={todo.uuid}
                                                   text={todo.todo}
                                                   completed={todo.done}
-                                                  onClick={() => onToggleTodo(todo.uuid)}
+                                                  onClick={() => !todo.done && onToggleTodo(todo.uuid)}
                                                   />)
                     }
                 </List>
