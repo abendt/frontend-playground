@@ -8,11 +8,11 @@ import _ from 'lodash'
 const toJs = (WrappedComponent) => {
     return class extends React.Component {
         toJs() {
+            // unwrap immutableJS types to plainJS
             return _.mapValues(this.props, value => (typeof value.toJS === 'function') ? value.toJS() : value)
         }
 
         render() {
-            // Wraps the input component in a container, without mutating it. Good!
             return <WrappedComponent {...this.toJs() } />;
         }
     }

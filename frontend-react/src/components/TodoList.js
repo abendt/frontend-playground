@@ -4,9 +4,6 @@ import Todo from './Todo'
 import AddTodo from './AddTodo'
 
 const TodoList = ({todos, onAddTodo, onToggleTodo}) => {
-
-    console.log("TodoList", todos);
-
     return (
         <div>
             <AddTodo onAddTodo={onAddTodo}/>
