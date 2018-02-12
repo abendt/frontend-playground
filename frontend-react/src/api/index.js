@@ -4,7 +4,6 @@ const axios = Axios.create({
 });
 
 const apiGetTodos = () => {
-
     console.log("get /todos");
     return axios.get('/todos');
 }
@@ -17,4 +16,4 @@ const apiPostToggleTodo = (uuid) => {
     return axios.post("/todos/" + uuid)
 }
 
-export {apiGetTodos, apiPostTodo, apiPostToggleTodo}
+export default {apiGetTodos, apiPostTodo, apiPostToggleTodo}

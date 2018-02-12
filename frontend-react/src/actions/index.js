@@ -1,4 +1,4 @@
-import {apiPostTodo, apiGetTodos, apiPostToggleTodo} from '../api';
+import api from '../api';
 
 export const ADD_TODO = 'ADD_TODO';
 export const TOGGLE_TODO = 'TOGGLE_TODO';
@@ -8,7 +8,7 @@ const uuidv1 = require('uuid/v1');
 
 // https://redux.js.org/docs/basics/Actions.html
 
-export function addTodo(text) {
+const addTodo = (text) => {
   return {
     id: uuidv1(),
     type: ADD_TODO,
@@ -16,42 +16,44 @@ export function addTodo(text) {
   }
 }
 
-export function toggleTodo(id) {
+const toggleTodo = (id) => {
   return {
     type: TOGGLE_TODO,
     id
   }
 }
 
-export function createTodo(text) {
+const createTodo = (text) => {
     return function(dispatch) {
-        apiPostTodo(text).then((response) => dispatch(loadTodos(response.data)));
+        api.apiPostTodo(text).then((response) => dispatch(loadTodos(response.data)));
     }
 }
 
-function loadTodos(todos) {
+const loadTodos = (todos) => {
     return {
         type: LOAD_TODOS,
         todos
     }
 }
 
-export function fetchTodos() {
+export const fetchTodos = () => {
     return function(dispatch) {
-        apiGetTodos().then((response) => {
+        api.apiGetTodos().then((response) => {
             console.log(response.data);
             dispatch(loadTodos(response.data));
         })
     }
 }
 
-export function postToggleTodo(uuid) {
+const postToggleTodo = (uuid) => {
     console.log("postToggleTodo", uuid);
 
     return function(dispatch) {
-        apiPostToggleTodo(uuid).then((response) => {
+        api.apiPostToggleTodo(uuid).then((response) => {
 
             console.log(response);
         dispatch(toggleTodo(uuid))})
     }
 }
+
+export default {addTodo, toggleTodo, createTodo, loadTodos, fetchTodos, postToggleTodo};

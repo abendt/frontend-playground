@@ -1,5 +1,5 @@
 import TodoList from '../components/TodoList'
-import {addTodo, toggleTodo, createTodo, postToggleTodo} from '../actions';
+import actions from '../actions';
 import {connect} from 'react-redux'
 
 import toJs from './containers'
@@ -11,9 +11,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    onToggleTodo: id => dispatch(postToggleTodo(id)),
+    onToggleTodo: id => dispatch(actions.postToggleTodo(id)),
 
-    onAddTodo: text => dispatch(createTodo(text))
+    onAddTodo: text => dispatch(actions.createTodo(text))
 });
 
 const VisibleTodoList = connect(
