@@ -11,6 +11,8 @@ import {todos} from './reducers';
 
 import {fetchTodos} from './actions'
 
+import { AppContainer } from 'react-hot-loader'
+
 import {
   combineReducers
 } from 'redux-immutable';
@@ -38,11 +40,21 @@ const store = createStore(rootReducer, initialState, composeEnhancers(
   ));
 
 
+const render = Component => {
 ReactDOM.render(
 <Provider store={store}>
-    <App />
+     <AppContainer>
+        <Component />
+     </AppContainer>
 </Provider>, document.getElementById('root'));
+}
+
+render(App)
 
 store.dispatch(fetchTodos());
 
 registerServiceWorker();
+
+if (module.hot) {
+  module.hot.accept('./App', () => { render(App) })
+}
