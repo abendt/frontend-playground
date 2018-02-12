@@ -1,5 +1,5 @@
 TodoList example:
 
 ```js
-<TodoList />
+<TodoList todos={[{uuid: 'id', todo: 'text', done: false}]} />
 ```
