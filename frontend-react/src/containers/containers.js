@@ -16,6 +16,6 @@ const toJs = (WrappedComponent) => {
             return <WrappedComponent {...this.toJs() } />;
         }
     }
-}
+};
 
 export default toJs;
