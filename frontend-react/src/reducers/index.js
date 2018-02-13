@@ -1,6 +1,13 @@
 import {ADD_TODO, TOGGLE_TODO, LOAD_TODOS} from '../actions';
 import Immutable from 'immutable';
 
+
+
+import {
+  combineReducers
+} from 'redux-immutable';
+
+
 export const todo = (uuid, todo) => Immutable.Map({uuid, todo, done: false});
 
 export const toggle = (todo) => todo.set('done', !todo.get('done'));
@@ -32,3 +39,8 @@ export const todos = (state = Immutable.List(), action) => {
             return state
     }
 };
+
+const rootReducer = combineReducers({todos});
+
+export default rootReducer;
+

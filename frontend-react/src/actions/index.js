@@ -46,12 +46,8 @@ export const fetchTodos = () => {
 }
 
 const postToggleTodo = (uuid) => {
-    console.log("postToggleTodo", uuid);
-
     return function(dispatch) {
         api.apiPostToggleTodo(uuid).then((response) => {
-
-            console.log(response);
         dispatch(toggleTodo(uuid))})
     }
 }
