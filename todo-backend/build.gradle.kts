@@ -9,11 +9,6 @@ buildscript {
     repositories {
         jcenter()
     }
-
-    dependencies {
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.2.30")
-        classpath("com.bmuschko:gradle-docker-plugin:3.2.3")
-    }
 }
 
 plugins {
