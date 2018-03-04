@@ -11,14 +11,14 @@ buildscript {
     }
 
     dependencies {
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.2.21")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.2.30")
         classpath("com.bmuschko:gradle-docker-plugin:3.2.3")
     }
 }
 
 plugins {
     application
-    kotlin("jvm") version "1.2.21"
+    kotlin("jvm") version "1.2.30"
     id("com.bmuschko.docker-java-application") version "3.2.3"
     id("com.bmuschko.docker-remote-api") version "3.2.3"
 }
@@ -74,7 +74,7 @@ dependencies {
     runtime("ch.qos.logback:logback-classic:1.2.3")
     runtime("org.slf4j:log4j-over-slf4j:1.7.25")
 
-    testCompile("io.rest-assured:rest-assured:3.0.6")
+    testCompile("io.rest-assured:rest-assured:3.0.7")
 
     testCompile("junit:junit:4.12")
     testCompile("com.natpryce:hamkrest:1.4.2.2")
