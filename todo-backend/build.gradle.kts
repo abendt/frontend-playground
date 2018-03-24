@@ -13,7 +13,7 @@ buildscript {
 
 plugins {
     application
-    kotlin("jvm") version "1.2.30"
+    kotlin("jvm") version "1.2.31"
     id("com.bmuschko.docker-java-application") version "3.2.5"
     id("com.bmuschko.docker-remote-api") version "3.2.5"
 }
@@ -47,7 +47,6 @@ java {
 }
 
 fun ktor(artifactId: String, ktorVersion: String = "0.9.1"): String {
-
     return "io.ktor:$artifactId:$ktorVersion"
 }
 
@@ -64,7 +63,7 @@ dependencies {
 
     compile("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.4")
 
-    compile("io.github.microutils:kotlin-logging:1.5.3")
+    compile("io.github.microutils:kotlin-logging:1.5.4")
 
     runtime("ch.qos.logback:logback-classic:1.2.3")
     runtime("org.slf4j:log4j-over-slf4j:1.7.25")
